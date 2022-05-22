@@ -16,6 +16,8 @@ public class HumanTest {
             Samurai samurai2 = new Samurai();
             Samurai samurai3 = new Samurai();
             Knight knight = new Knight();
+            Knight knight2 = new Knight();
+            Human human3 = new Human();
 
             /**
              * TESTING CHARACTER METHODS
@@ -62,7 +64,16 @@ public class HumanTest {
             knight.Reinforce();
             wizard.fireball(knight);
             knight.HolyStrike(human1);
+            knight2.HolyStrike(samurai3);
+            knight2.HolyStrike(knight);
             System.out.println();
+
+            // System.out.println(ANSI_RED
+            // + "HOLY STRIKE" + ANSI_RESET);
+            // // knight2.HolyStrike(human3);
+            // // wizard.fireball(knight2);
+            // // knight2.HolyStrike(human3);
+            // knight2.HolyStrike(knight2);
 
       }
 

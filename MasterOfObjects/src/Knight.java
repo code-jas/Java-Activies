@@ -20,10 +20,43 @@ public class Knight extends Human {
    }
 
    public void HolyStrike(Human human) {
-      int damage = 10 + (this.getArmor() * (20 / 100));
-      // target.setHealth(target.getHealth() - damage);
+      int damage = (int) Math.round((double) 10 + ((double) this.getArmor() * (double) 20 / 100));
+      int newHealth = human.getHealth() - damage;
+      // System.out.println("Armor : " + this.getArmor());
+      // System.out.println("Percentage of Damage:" + ((double) this.getArmor() *
+      // (double) 20 / 100));
+      // System.out.println("Damage:" + damage);
+
+      human.setHealth(newHealth);
       System.out.println("\"Holy Strike!\"");
-      System.out.println("The attacker dealt " + damage + " damage with his attack.");
+      System.out.println("The attacker dealt estimated " + damage + " damage with his attack.");
+      System.out.println("The target has now " + newHealth + " health.");
+      System.out.println();
+      // System.out.println("The health is now " + target.getHealth() + ".");
+   }
+
+   public void HolyStrike(Knight knight) {
+      int damage = (int) ((double) 10 + ((double) this.getArmor() * (double) 20 / 100));
+      int newHealth;
+      System.out.println("\"Holy Strike!\"");
+      System.out.println("The attacker dealt estimated " + damage + " damage with his attack.");
+
+      if (!knight.isArmorDestroyed()) {
+         System.out.println("Armor is still intact.");
+         newHealth = knight.checkArmor(damage);
+      } else {
+         System.out.println("Armor Destroyed!!!");
+
+         newHealth = knight.getHealth() - damage;
+      }
+      // System.out.println("Armor : " + this.getArmor());
+      // System.out.println("Percentage of Damage:" + ((double) this.getArmor() *
+      // (double) 20 / 100));
+      // System.out.println("Damage:" + damage);
+
+      knight.setHealth(newHealth);
+      System.out.println("The target has now " + newHealth + " health and "
+            + knight.getArmor() + " armor.");
       System.out.println();
       // System.out.println("The health is now " + target.getHealth() + ".");
    }

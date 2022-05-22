@@ -19,6 +19,7 @@ public class Wizard extends Human {
    }
 
    // attack method
+   // HUMAN
    public void fireball(Human human) {
       int fireballDamage = this.getIntelligence() * 3;
       int newHealth = human.getHealth() - fireballDamage;
@@ -29,6 +30,7 @@ public class Wizard extends Human {
       System.out.println();
    }
 
+   // KNIGHT
    public void fireball(Knight knight) {
 
       int fireballDamage = this.getIntelligence() * 3;

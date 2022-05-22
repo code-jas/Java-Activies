@@ -14,7 +14,7 @@ public class Ninja extends Human {
       this.setHealth(this.getHealth() + this.getStealth());
       System.out.println("\"Stealed!!!\"");
       System.out.println("The attacker dealt " + this.getStealth() + " damage with his attack.");
-      System.out.println("The stolen target has " + human.getHealth() + " health left.");
+      System.out.println("The target has " + human.getHealth() + " health left.");
       System.out.println("The ninja has " + this.getHealth() + " health now.");
       System.out.println();
    }
@@ -37,7 +37,7 @@ public class Ninja extends Human {
       knight.setHealth(newHealth);
       this.setHealth(this.getHealth() + this.getStealth());
 
-      System.out.println("The stolen human has now " + knight.getHealth() + " health and " +
+      System.out.println("The target has now " + knight.getHealth() + " health and " +
             knight.getArmor() + " armor.");
       System.out.println("The Ninja has " + this.getHealth() + " health now.");
       System.out.println();

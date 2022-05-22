@@ -1,3 +1,5 @@
+import java.lang.Math;
+
 public class Knight extends Human {
    private int armor = 30;
 
@@ -11,27 +13,41 @@ public class Knight extends Human {
 
    public void Reinforce() {
       this.setArmor(this.getArmor() + 5);
-      System.out.println("Armor regenerated!");
-      System.out.println("Regenerated Armor: 5");
-      System.out.println("The armor is now " + this.getArmor() + ".");
+      System.out.println("\"Armor regeneration!\"");
+      System.out.println("The armor increased by 5");
+      System.out.println("The total amount of armor is " + this.getArmor() + ".");
+      System.out.println();
    }
 
-   public void HolyStrike(Human target) {
-      int damage = this.getStrength() * 2;
-      target.setHealth(target.getHealth() - damage);
-      System.out.println("Holy Strike!");
-      System.out.println("Damage: " + damage);
-      System.out.println("The health is now " + target.getHealth() + ".");
+   public void HolyStrike(Human human) {
+      int damage = 10 + (this.getArmor() * (20 / 100));
+      // target.setHealth(target.getHealth() - damage);
+      System.out.println("\"Holy Strike!\"");
+      System.out.println("The attacker dealt " + damage + " damage with his attack.");
+      System.out.println();
+      // System.out.println("The health is now " + target.getHealth() + ".");
    }
 
    public boolean isArmorDestroyed() {
 
-      if (this.getArmor() <= 0) {
-         // System.out.println("Armor Destroyed!!!");
+      if (this.getArmor() <= 0) { // armor destroyed
+
          return true;
       }
-      // System.out.println("Armor is still intact.");
+      // armor is still intact.
       return false;
+   }
+
+   public int checkArmor(int damageTaken) {
+      int newArmor = this.getArmor() - damageTaken;
+      if (newArmor <= 0) { // negative value
+         System.out.println("The damage penetrated the armor!");
+         this.setArmor(0);
+         this.setHealth(this.getHealth() - Math.abs(newArmor));
+      } else { // positive value
+         this.setArmor(newArmor);
+      }
+      return this.getHealth();
    }
 
    public int getArmor() {
@@ -41,4 +57,5 @@ public class Knight extends Human {
    public void setArmor(int armor) {
       this.armor = armor;
    }
+
 }

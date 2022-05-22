@@ -14,11 +14,34 @@ public class Human {
       this.health = health;
    }
 
+   // attack method
    public void attack(Human human) {
       human.health -= this.getStrength();
-      System.out.println("Attacked!!!");
-      System.out.println("Damage: " + this.getStrength());
-      System.out.println("The damaged  attacked human has " + human.getHealth() + " health left.");
+      System.out.println("\"Attacked!\"");
+      System.out.println("The attacker dealt " + this.getStrength() + " damage with his attack.");
+      System.out.println("The target has now " + human.getHealth() + " health.");
+      System.out.println();
+   }
+
+   public void attack(Knight knight) {
+      // knight.health = knight.health - this.getStrength();
+      int newHealth;
+      System.out.println("\"Attacked!\"");
+      System.out.println("The attacker dealt " + this.getStrength() + " damage with his attack.");
+      if (!knight.isArmorDestroyed()) {
+         System.out.println("Armor is still intact.");
+         newHealth = knight.checkArmor(this.getStrength());
+      } else {
+         System.out.println("Armor Destroyed!!!");
+
+         newHealth = knight.getHealth() - this.getStrength();
+      }
+
+      knight.setHealth(newHealth);
+
+      System.out.println(
+            "The target has now " + knight.getHealth() + " health and "
+                  + knight.getArmor() + " armor.");
       System.out.println();
    }
 
